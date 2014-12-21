@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="style.css" />
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+	<script src="socket.io/socket.io.js"></script>
+	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+	<script src="client.js"></script>
+	<script type="text/javascript">
+		function uebergabeL () {
+			if (typeof(Storage) != "undefined") {
+				if (localStorage.playerrole) {
+					localStorage.playerrole = "l";
+				} else {
+					localStorage.playerrole = "l";
+				}
+			} 
+			else {
+				document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Storage...";
+			}
+			location.href = "#pagespiel";
+			return false;
+		}
+		function uebergabeR () {
+			if (typeof(Storage) != "undefined") {
+				if (localStorage.playerrole) {
+					localStorage.playerrole = "r";
+				} else {
+					localStorage.playerrole = "r";
+				}
+				// Store
+				localStorage.setItem("playerrole", "r");
+			} 
+			else {
+				document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Storage...";
+			}
+			location.href = "#pagespiel";
+			return false;
+		}
+		function uebergabeV () {
+			if (typeof(Storage) != "undefined") {
+				if (localStorage.playerrole) {
+					localStorage.playerrole = "";
+				} else {
+					localStorage.playerrole = "";
+				}
+			} 
+			else {
+				document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Storage...";
+			}
+			location.href = "#pagespiel";
+			return false;
+		}
+		function uebergabeB () {
+			if (typeof(Storage) != "undefined") {
+				if (localStorage.playerrole) {
+					localStorage.playerrole = "b";
+				} else {
+					localStorage.playerrole = "b";
+				}
+			} 
+			else {
+				document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Storage...";
+			}
+			location.href = "#pagespiel";
+			return false;
+		}
+	</script>
+</head>
+<body>
+	<div data-role="page" id="pagestart" data-theme="a"> 
+		<div data-role="header" data-theme="b">
+			<h1>Ponng!</h1>
+			<a href="http://neno000003.appspot.com/" class="ui-btn"> von Norbertus</a>
+			<a href="win_width.html" class="ui-btn"> Test Win Width</a>
+		</div>
+		
+		 <div data-role="main" class="ui-content">
+			<p>Try to rotate your device!</p>
+		</div>
+
+		 <div data-role="footer" style="text-align:center;" data-theme="b">
+			<h1>Wähle Deine Rolle!</h1>
+			<div data-role="controlgroup" data-type="horizontal">
+				<div id="result"></div>
+				<button class="ui-btn" id="btn_left_player" type="button" onclick="uebergabeL()">Linker Spieler</button>
+				<button class="ui-btn" id="btn_viewer" type="button" onclick="uebergabeV()">Zuschauer</button>
+				<button class="ui-btn" id="btn_ball" type="button" onclick="uebergabeB()">Ball</button>
+				<button class="ui-btn" id="btn_right_player" type="button" onclick="uebergabeR()">Rechter Spieler</button>
+			</div>
+		</div>
+		
+	</div> <!-- /page Start-->
+	<div data-role="page" id="pagespiel" data-theme="a"> 
+		<div data-role="header" data-theme="b">
+			<h1>Ponng!</h1>
+			<a href="#pagestart">Go to Start</a>
+		</div>
+		
+		 <div data-role="main" class="ui-content" data-theme="b">
+			<audio id="audio_pongblipf4" src="audio/pongblipf4.wav" preload="auto"></audio>
+			<audio id="audio_pongblipf_4" src="audio/pongblipf-4.wav" preload="auto"></audio>
+			<audio id="audio_pongblipf_5" src="audio/pongblipf-5.wav" preload="auto"></audio>
+			<audio id="audio_shot_goal" src="audio/shot-goal.wav" preload="auto"></audio>
+			
+		
+			<div id="mouse_area" >
+				<svg id="mySVG" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+				</svg>
+			</div>
+			<br/>
+
+			<div data-role="controlgroup" data-type="horizontal">
+				<input class="ui-btn" id="sendenBlauHoch" type="submit" class="btn" value="Blau Hoch" />
+				<input class="ui-btn" id="sendenBlauRunter" type="submit" class="btn" value="Blau Runter" />
+				<input class="ui-btn" id="sendenRotHoch" type="submit" class="btn" value="Rot Hoch" />
+				<input class="ui-btn" id="sendenRotRunter" type="submit" class="btn" value="Rot Runter" />
+				<input class="ui-btn" id="starteBall" type="submit" class="btn" value="Ball" />
+			</div>
+			<p id="demo"></p>
+		</div>
+	
+	
+	
+		 <div data-role="footer" style="text-align:center;" data-theme="b">
+			<div data-role="fieldcontain">
+				<label for="name">Rolle eingeben:</label>
+				<input type="text" name="name" id="name" value="" placeholder="sp1 oder sp2 eingeben" />
+			</div>	
+		</div>
+		
+	</div> <!-- /page Spiel -->
+
+</body>
+</html>
