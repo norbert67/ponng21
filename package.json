@@ -1,5 +1,5 @@
 {
-  "name": "ponng18",
+  "name": "ponng21",
   "description": "Ein einfaches Telespiel",
   "author": "NNE",
   "version": "0.0.1",
@@ -11,6 +11,6 @@
     "node": "0.10.x"
   },
   "scripts": {
-    "start": "node index.js"
-  }
+    "start": "node server.js"
+  } 
 }
